@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-from bs4 import BeautifulSoup
+from beautifulsoup4 import beautifulsoup4
 import pandas as pd
 
 st.title("Sold Coin Listings Scraper")
@@ -26,7 +26,7 @@ if st.button("Scrape Sold Listings"):
 
     headers = {"User-Agent": "Mozilla/5.0"}
     response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.content, "html.parser")
+    soup = beautifulsoup4(response.content, "html.parser")
 
     items = soup.find_all("li", class_="s-item")
     results = []
